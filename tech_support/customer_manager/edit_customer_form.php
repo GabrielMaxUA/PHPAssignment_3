@@ -24,6 +24,7 @@ if ($custID) {
     $customer = $statement->fetch();
     $statement->closeCursor();
 
+
     // If customer data is fetched, populate the variables
     if ($customer) {
         $firstName = $customer['firstName'];
@@ -38,6 +39,12 @@ if ($custID) {
         $password = $customer['password'];
     }
 }
+
+$queryCountries = 'SELECT * FROM countries';
+$statement = $db->prepare($queryCountries);
+$statement->execute();
+$countries = $statement->fetchAll();  // Fetch all countries as an array
+$statement->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +104,14 @@ if ($custID) {
 
             <div class="labs">
                 <label for="countryCode">Country Code:</label>
-                <input type="text" name="countryCode" value="<?php echo htmlspecialchars($countryCode); ?>"><br>
+                <select name="countryCode" id="countryCode">
+                    <?php foreach ($countries as $country): ?>
+                        <option value="<?php echo $country['countryCode']; ?>" 
+                            <?php if ($country['countryCode'] == $countryCode) echo 'selected'; ?>>
+                            <?php echo $country['countryName']; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select><br>
             </div>
 
             <div class="labs">
@@ -115,7 +129,6 @@ if ($custID) {
                 <input type="text" name="password" value="<?php echo htmlspecialchars($password); ?>"><br>
             </div>
 
-            <!-- Include hidden input for custID -->
             <input type="hidden" name="custID" value="<?php echo htmlspecialchars($custID); ?>">
 
             <div class="labs">

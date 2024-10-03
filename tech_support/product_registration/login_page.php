@@ -28,8 +28,9 @@ session_start();?>
         <p>You must login before you can register the product</p>
         <form action="validation_page.php" method="post" style="display: flex; align-items: center; flex-direction: row; justify-content: start;">
         <label for="email">Email:</label>
+        
         <input type="text" name="email" placeholder="Enter your email" style = "width: 200px;">
-        <input type="submit" value="Search">
+        <input type="submit" value="Login">
     </form>
       </main>
       <footer>

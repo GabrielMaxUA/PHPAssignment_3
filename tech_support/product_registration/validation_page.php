@@ -26,6 +26,8 @@ if ($customer) {
     // If found, set session variables
     $_SESSION['customer'] = $customer['firstName'] . ' ' . $customer['lastName'];
     $_SESSION['custID'] = $customer['customerID'];
+    $_SESSION['email'] = $email;
+    
 
     // Redirect to registration form
     header("Location: registration_form.php");

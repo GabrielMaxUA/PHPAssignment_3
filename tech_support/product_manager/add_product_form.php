@@ -39,7 +39,7 @@
 
             <div class="labs" id="date">
                 <label for="date">Release date:</label>
-                <input type="date" name="date"><br>
+                <input type="text" name="date" placeholder="Enter date (any standard format)"><br>
             </div>
 
             <div class="labs">

@@ -8,6 +8,13 @@ $statement-> execute();
 $products = $statement->fetchAll();
 $statement-> closeCursor();
 $_SESSION['productCode'] = $product['productCode'];
+
+$query = 'SELECT * FROM customers WHERE customerID = :custID';
+$statement = $db->prepare($query);
+$statement->bindValue(':custID', $custID);
+$statement->execute();
+$customer = $statement->fetch();
+$statement->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +53,15 @@ $_SESSION['productCode'] = $product['productCode'];
                     </select>
             </div>
             <input type="submit" value = "Register" style="margin: 20px; margin-left: 69px ">
+            
     </form>
-        
-    </form>
+    
       </main>
+      <p>You logged in as <?php echo $_SESSION['email']?></p>
+      <form action="login_page.php" method="post">
+        <input type="submit" value="Logout" style="margin: 20px; margin-left: 69px;">
+    </form>
+      
       <footer>
     <p class="copyright">
         &copy; <?php echo date("Y"); ?> SportsPro, Inc.
