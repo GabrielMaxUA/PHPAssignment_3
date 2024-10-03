@@ -41,7 +41,7 @@ $statement->closeCursor();
 </header>
 <main>
     <h2>Create Incident</h2>
-    <form action="" method="post" style="display: block; float: left;">
+    <form action="confirmation.php" method="post" style="display: block; float: left;">
         <p>Customer Name: <?php echo $_SESSION['customer'] ?></p>
         <p>Product:
             <select name="productCode" style="margin-left: 10px; width: fit-content;">
